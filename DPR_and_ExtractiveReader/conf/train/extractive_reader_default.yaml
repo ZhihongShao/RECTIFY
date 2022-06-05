@@ -1,0 +1,40 @@
+# @package _group_
+
+eval_step: 2000
+batch_size: 16
+dev_batch_size: 72
+adam_eps: 1e-8
+adam_betas: (0.9, 0.999)
+max_grad_norm: 1.0
+log_batch_step: 100
+train_rolling_loss_step: 100
+weight_decay: 0.0
+learning_rate: 1e-5
+
+# Linear warmup over warmup_steps.
+warmup_steps: 0
+
+# Number of updates steps to accumulate before performing a backward/update pass.
+gradient_accumulation_steps: 1
+
+# Total number of training epochs to perform.
+num_train_epochs: 100000
+
+# Probabilities are noramlized over the whole documents
+# Restricted to one of the following types
+# The whole documents have one correct answer span: 1) h3-span-mml 2) h3-span-hard_em 3) h3-span-hard_em_anneal 4) h3-pos-mml 5) h3-pos-hard_em 6) h3-pos-hard_em_anneal
+# Each paragraph has one correct answer span: 1) h2-pos-mml 2) h2-pos-hard_em 3) h2-pos-hard_em_anneal 4) h2-span-mml 5) h2-span-hard_em 6) h2-span-hard_em_anneal
+# All answer spans are coorect: 1) h1
+global_loss_type: 
+
+# Probabilities are normalized within each paragraph
+# Restricted to one of the following types
+# Each paragraph has one correct answer span: 1) h2-pos-mml 2) h2-pos-hard_em 3) h2-pos-hard_em_anneal 4) h2-span-mml 5) h2-span-hard_em 6) h2-span-hard_em_anneal
+# All answer spans are coorect: 1) h1
+local_loss_type: 'h2-span-mml'
+
+global_loss_coeff: 0.0
+
+local_loss_coeff: 1.0
+
+anneal_steps: -1

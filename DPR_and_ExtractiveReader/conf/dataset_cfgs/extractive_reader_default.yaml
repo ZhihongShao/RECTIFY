@@ -1,0 +1,34 @@
+# @package _group_
+
+# whether to truncate the passage so that len(ctx) <= encoder.sequence_length
+truncated_ctx: True
+
+# When splitting up a long document into chunks, how much stride to take between chunks
+# Matters only when `truncated_ctx` is False
+# If `truncated_ctx` is False and `doc_stride` is not specified, a document will be split up into non-overlapping chunks
+doc_stride: 
+
+# The maximum number of tokens for the question. Questions longer than this will be truncated to this length.
+# Questions WON'T be truncated if `max_question_length` is not set
+max_question_length: 
+
+# Whether to 
+use_tailing_sep: False
+
+# Whether to drop training questions without positive passages
+skip_no_positves: True
+
+# Whether to include the gold positive passage for training if it is not selected into the positive candidates
+include_gold_passage: False
+
+# Only use passages from the gold page as positives
+# Fallback to positive passages not from the gold page if no matches of gold passages due to failed retrieval or passage preprocessing
+gold_page_only_positives: True
+
+# The string is used for as no-answer string.
+# TODO: unused
+no_answer_string:
+
+# The maximum number of distinct short answer strings
+# TODO: unused
+max_num_answer_strings:

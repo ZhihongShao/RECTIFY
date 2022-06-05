@@ -1,0 +1,101 @@
+# extractive reader configuration
+
+defaults:
+  - encoder: hf_bert
+  - train: extractive_reader_default
+  - dataset_cfgs: extractive_reader_default
+
+# Whether to predict null answer via classification (CLS) or span extraction (CLS)
+use_answer_indicator: True
+
+# If `use_answer_indicator` equals True
+# Whether to train the answer_indicator with sigmoid cross entropy
+train_sigmoid_answer_indicator: False
+
+# Whether predicting null answer (for unanswerable questions) is allowed
+allow_null_pred: False
+
+# The threshold used to predict null answer
+null_pred_thres:
+
+# A trained reader checkpoint file to initialize the model
+model_file:
+
+# Whether to lower case the input text. Set True for uncased models, False for the cased ones.
+do_lower_case: True
+
+seed: 42
+
+# glob expression for train data files
+train_files:
+
+# glob expression for dev data files
+dev_files:
+
+# Total amount of positive and negative passages per question with one being positive and the others being negatives
+passages_per_question: 24
+
+# Whether to use a single positive per question for training
+single_positive_per_question: True
+
+# Total amount of passages per question for evaluation
+passages_per_question_predict: 50
+
+# The strategy to extract best span(s)
+# Restricted to [sum, max, rank-max]
+# (1) sum: the score of a candidate answer string is the sum of the probability of each mention
+  # Probabilities are normalized over the whole documents
+# (2) max: the score of a candidate answer string is the max probability of its mentions
+  # Probabilities are normalized over the whole documents
+# (3) rerank-max: the score of a candidate answer string is a tuple in the form of (rerank score of a passage, max probability of mentions in that passage); only when `dataset_cfgs.use_answer_indicator` == True should this strategy be used
+  # For ODQA, only top-`eval_top_docs` retrieved passages are considered
+  # Probability of mentions are normalized within each paragraph
+inference_strategy: rerank-max
+
+# The output directory where the model checkpoints will be written to
+output_dir:
+
+# Max amount of answer spans per positive passage to train on
+max_n_answers: 10
+
+# The maximum length of an answer that can be generated. This is needed because the start
+# and end predictions are not conditioned on one another
+max_answer_length: 10
+
+# Top retrieval passages thresholds to analyze prediction results for
+eval_top_docs:
+  - 50
+
+checkpoint_file_name: dpr_extractive_reader
+
+# Path to a file to write prediction results to
+prediction_results_file:
+
+# Enables fully resumable mode
+fully_resumable: False
+
+# File with the original train dataset passages (json format)
+gold_passages_src:
+
+# File with the original dataset passages (json format)
+gold_passages_src_dev:
+
+# num of threads to pre-process data.
+num_workers: 16
+
+# TODO: move to a conf group
+# local_rank for distributed training on gpus
+local_rank: -1
+global_loss_buf_sz: 150000
+device:
+distributed_world_size:
+no_cuda: False
+n_gpu:
+fp16: False
+
+# For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
+#        "See details at https://nvidia.github.io/apex/amp.html
+fp16_opt_level: O1
+
+# a list of tokens to avoid tokenization
+special_tokens:

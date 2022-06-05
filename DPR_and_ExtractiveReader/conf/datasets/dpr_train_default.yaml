@@ -1,0 +1,73 @@
+# @package _group_
+
+nq_train:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.nq-train
+
+nq_train_hn1:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.nq-adv-hn-train
+
+nq_dev:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.nq-dev
+
+trivia_train:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.trivia-train
+
+trivia_dev:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.trivia-dev
+
+squad1_train:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.squad1-train
+
+squad1_dev:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.squad1-dev
+
+ambigqa_train:
+  _target_: dpr.data.distill_uniencoder_dpr_data.JsonQADataset
+  file: ../../../../data/retriever/finetune_distill_dpr/AmbigQA/train.json
+
+ambigqa_dev:
+  _target_: dpr.data.distill_uniencoder_dpr_data.JsonQADataset
+  file: ../../../../data/retriever/finetune_distill_dpr/AmbigQA/dev.json
+
+webqsp_train:
+  _target_: dpr.data.distill_uniencoder_dpr_data.JsonQADataset
+  file: ../../../../data/retriever/finetune_distill_dpr/WebQSP/train.json
+
+webqsp_dev:
+  _target_: dpr.data.distill_uniencoder_dpr_data.JsonQADataset
+  file: ../../../../data/retriever/finetune_distill_dpr/WebQSP/dev.json
+
+nq_train_realm:
+  _target_: dpr.data.realm_dpr_data.JsonQADatasetForREALM
+  file: data.retriever.nq-train
+
+nq_train_hn1_realm:
+  _target_: dpr.data.realm_dpr_data.JsonQADatasetForREALM
+  file: data.retriever.nq-adv-hn-train
+
+nq_dev_realm:
+  _target_: dpr.data.realm_dpr_data.JsonQADatasetForREALM
+  file: data.retriever.nq-dev
+
+ambigqa_train_realm:
+  _target_: dpr.data.realm_dpr_data.JsonQADatasetForREALM
+  file: ../../../../data/retriever/finetune_realm_dpr/AmbigQA/train.json
+
+ambigqa_dev_realm:
+  _target_: dpr.data.realm_dpr_data.JsonQADatasetForREALM
+  file: ../../../../data/retriever/finetune_realm_dpr/AmbigQA/dev.json
+
+webqsp_train_realm:
+  _target_: dpr.data.realm_dpr_data.JsonQADatasetForREALM
+  file: ../../../../data/retriever/finetune_realm_dpr/WebQSP/train.json
+
+webqsp_dev_realm:
+  _target_: dpr.data.realm_dpr_data.JsonQADatasetForREALM
+  file: ../../../../data/retriever/finetune_realm_dpr/WebQSP/dev.json
