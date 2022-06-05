@@ -1,0 +1,49 @@
+# @package _group_
+
+# Total number of training epochs to perform.
+num_train_epochs: 100000
+max_steps:
+eval_step: 1000
+start_eval_epoch: 0
+start_eval_step: 0
+early_stopping:
+batch_size: 16
+dev_batch_size: 72
+
+# Training logging
+log_batch_step: 100
+
+# Number of updates steps to accumulate before performing a backward/update pass.
+gradient_accumulation_steps: 1
+
+# If set to `True`, the saved optimizer states, lr_scheduler_states, and client states will be restored
+continue_training: False
+
+# Whether to use activation checkpointing
+use_checkpoint: True
+
+# Optimizer
+adam_eps: 1e-8
+adam_betas: (0.9, 0.999)
+weight_decay: 0.0
+lr: 1e-5
+
+# Whether to run optimizer on CPU
+cpu_optimizer: False
+
+# Whether to use torch.optim.AdamW or DeepSpeedCPUAdam on cpu
+cpu_torch_adam: False
+
+# Scheduler
+# Minimum learning rate
+min_lr: 1e-5
+
+# lr decay style: [linear, cosine, exponential]
+# Fixed to min_lr if not set
+lr_decay_style:
+
+# Linear warmup over warmup_steps.
+warmup_steps: 500
+
+# Checkpoint
+max_to_keep: 10

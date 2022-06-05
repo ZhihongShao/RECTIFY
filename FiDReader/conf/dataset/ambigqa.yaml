@@ -1,0 +1,55 @@
+# @package _group_
+
+# evaluate the model(s) on a particular shard of the evaluation set
+eval_num_shards: 1
+eval_shard_id: 0
+
+# whether this is a multi-answer dataset
+multi_answers: True
+
+# topk positive retrieved passages used for training a recaller
+top_k_pos: 20
+
+# number of negatives per positive used for training
+num_neg_per_pos: 2
+
+# cfgs for preprocessing annotated answers
+extend_alternative_answers_for_training: True
+matching_consider_title_for_training: True
+matching_ignore_puncts_for_training: True
+matching_ignore_stop_words_for_training: True
+
+# the maximum encoding length
+max_context_length: 280
+# the number of retrieved passages used for a recaller or a verifier
+n_contexts: 5
+# the maximum length of an answer candidate
+max_answer_length: 40
+
+# the token used to separate multiple answer candidates recalled from a passage
+answer_separator: <pad>
+# whether to shuffle answer candidates when training a recaller
+shuffle_answers: True
+# the maximum number of candidates recalled from a passage, -1 means recalling all candidates from a passage
+max_num_answers: -1
+
+# verifier verbalizer
+# verbalizer for invalid answer candidates
+# 26213: irrelevant
+# 6136: false
+# 150: no
+# 1786: wrong
+irrelevant_token_id: 1786
+# verbalizer for valid answer candidates
+# 2193: relevant
+# 1176: true
+# 4273: yes
+# 269: right
+relevant_token_id: 269
+# whether to encode the answer candidate to be verified
+answer_in_decoder: True
+# whether to use the answer candidate as the decoding prefix
+answer_in_encoder: True
+
+# the default answer when there is no valid answer found
+irrelevant_answer: irrelevant

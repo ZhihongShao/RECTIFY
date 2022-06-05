@@ -1,0 +1,44 @@
+# extractive reader configuration
+
+defaults:
+  - distributed: distributed_cfg
+  - train: model_train_default
+  - dataset: ambigqa
+
+
+# A trained model checkpoint directory to initialize the model
+ckpt_dir:
+
+# Prefix of saved checkpoint dirname
+ckpt_tag_prefix:
+
+# Pretrained language model used
+plm_name_or_path:
+
+# Whether to lower case the input text. Set True for uncased models, False for the cased ones.
+do_lower_case: True
+
+seed: 42
+
+# glob expression for train data files
+train_files:
+
+# glob expression for dev data files
+dev_files:
+
+# whether to run recaller cluster
+cluster: False
+cluster_batch_size: 10
+
+# The output directory where the model checkpoints will be written to
+output_dir:
+
+# Path to a file to write prediction results to
+prediction_results_file:
+
+# num of threads to pre-process data.
+num_workers: 16
+
+log_on_rank_0_only: True
+
+local_rank: -1
